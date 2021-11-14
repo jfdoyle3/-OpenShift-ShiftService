@@ -13,12 +13,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/shifts")
 public class ShiftController {
+
     @Autowired
     private ShiftRepository repository;
 
+
     @GetMapping
-    public @ResponseBody
-    List<Shift> getShifts() {
+    @ResponseBody
+    public List<Shift> getShifts() {
         return repository.findAll();
     }
 
@@ -27,10 +29,9 @@ public class ShiftController {
         return new ResponseEntity<>(repository.save(newShift), HttpStatus.CREATED);
     }
 
-
     @PutMapping("/{id}")
-    public @ResponseBody
-    Shift updateShift(@PathVariable Long id, @RequestBody Shift updates) {
+    @ResponseBody
+    public Shift updateShift(@PathVariable Long id, @RequestBody Shift updates) {
         Shift shift = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
 //        if (updates.getName() != null) Shift.setName(updates.getName());
