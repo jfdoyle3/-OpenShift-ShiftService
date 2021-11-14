@@ -23,12 +23,6 @@ public class ShiftController {
         return repository.findAll();
     }
 
-    @GetMapping("/name")
-    @ResponseBody
-    public List<String> findByName() {
-        return repository.findByName("jim");
-    }
-
     @PostMapping
     public ResponseEntity<Shift> addShift(@RequestBody Shift newShift) {
         return new ResponseEntity<>(repository.save(newShift), HttpStatus.CREATED);
