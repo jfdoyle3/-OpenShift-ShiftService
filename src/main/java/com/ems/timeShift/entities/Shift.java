@@ -11,25 +11,33 @@ public class Shift {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String name;
     private String shiftType;
     private String shiftStart;
     private String shiftEnd;
     private Double hours;
 
-    @ManyToOne
-    @JoinColumn(name="employee_id", referencedColumnName = "id")
-    public Employee employee;
+//    @ManyToOne
+//    @JoinColumn(name="employee_id", referencedColumnName = "id")
+//    public Employee employee;
 
 
-    public Shift() {
+    public Shift() {}
 
-    }
-
-    public Shift(String shiftType, String shiftStart, String shiftEnd, Double hours) {
+    public Shift(String name, String shiftType, String shiftStart, String shiftEnd, Double hours) {
+        this.name=name;
         this.shiftType = shiftType;
         this.shiftStart = shiftStart;
         this.shiftEnd = shiftEnd;
         this.hours = hours;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {

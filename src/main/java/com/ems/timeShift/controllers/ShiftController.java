@@ -17,11 +17,16 @@ public class ShiftController {
     @Autowired
     private ShiftRepository repository;
 
-
     @GetMapping
     @ResponseBody
     public List<Shift> getShifts() {
         return repository.findAll();
+    }
+
+    @GetMapping("/name")
+    @ResponseBody
+    public List<String> findByName() {
+        return repository.findByName("jim");
     }
 
     @PostMapping
